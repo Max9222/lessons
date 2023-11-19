@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'main',
     'users',
 ]
 
@@ -79,8 +80,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'lessons',
-        'USER': 'postgres'
+        'NAME': 'lessons',
+        'USER': 'postgres',
+        'PASSWORD': 'qwert',
+        'HOST': '127.0.0.1'
     }
 }
 
