@@ -30,3 +30,18 @@ class Lesson(models.Model):
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
         ordering = ('name',)
+
+
+class Amount(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    amount = models.PositiveIntegerField(verbose_name='количество уроков')
+
+    def __str__(self):
+        return f'{self.course} - {self.lesson} - {self.amount}'
+
+    class Meta:
+        verbose_name = 'кол-во уроков'
+        verbose_name_plural = 'кол-во уроков'
+        ordering = ('-amount',)
