@@ -4,7 +4,7 @@ from main.apps import MainConfig
 
 from django.urls import path
 
-from main.views.amount import *
+
 from main.views.lesson import *
 from main.views.course import *
 
@@ -20,7 +20,5 @@ urlpatterns = [
     path('<int:pk>/update/', LessonUpdateView.as_view(), name='lesson_update'),
     path('<int:pk>/delete/', LessonDestroyView.as_view(), name='lesson_delete'),
 
-    path('amount/', AmountListView.as_view(), name='amount_list'),
-    path('amount/create/', AmountCreateView.as_view(), name='amount_create'),
 
 ] + router.urls

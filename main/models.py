@@ -8,6 +8,8 @@ class Course(models.Model):
     image = models.ImageField(upload_to='main/', verbose_name='превью(картинка)', **NULLABLE)
     description = models.TextField(verbose_name='описание')
 
+    lesson = models.ForeignKey('main.Lesson', verbose_name='Урок', related_name='main', on_delete=models.SET_NULL, null=True)
+
     def __str__(self):
         return f'{self.name}'
 
@@ -23,6 +25,8 @@ class Lesson(models.Model):
     image = models.ImageField(upload_to='main/', verbose_name='превью(картинка)', **NULLABLE)
     link = models.SlugField(max_length=200, verbose_name='ссылка на видео', **NULLABLE)
 
+    #course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
     def __str__(self):
         return f'{self.name}'
 
@@ -30,18 +34,3 @@ class Lesson(models.Model):
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
         ordering = ('name',)
-
-
-class Amount(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
-
-    amount = models.PositiveIntegerField(verbose_name='количество уроков')
-
-    def __str__(self):
-        return f'{self.course} - {self.lesson} - {self.amount}'
-
-    class Meta:
-        verbose_name = 'кол-во уроков'
-        verbose_name_plural = 'кол-во уроков'
-        ordering = ('-amount',)
