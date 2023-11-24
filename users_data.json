@@ -1,0 +1,66 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$3iBximnQRVU8edfVBpG1vB$usfVYvPmvF/vQdB70XENVUZFoUB0LQTfG2nMwOCO8V8=",
+      "last_login": "2023-10-30T18:09:39.982Z",
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "Store",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-10-25T20:42:49Z",
+      "email": "admin@store.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$l0E6nbrATa3KyPkGBMmimj$OOrfIb2dAk7ickaPdFJpDCzLU5xeNP+Dh6AU2knIyvk=",
+      "last_login": "2023-10-29T20:06:41.615Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-10-28T12:36:00Z",
+      "email": "maxoog@bk.ru",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$9avMwP2ssEyVmZAt1ZfE6N$l1TT55ACQhAwVkOgPIEC0hshsBLcUQFf2dLbZH5Y4RM=",
+      "last_login": "2023-10-29T20:05:27.086Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-28T14:18:05.150Z",
+      "email": "admin1@store.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

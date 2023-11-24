@@ -8,4 +8,3 @@ class LessonSerializer(serializers.ModelSerializer):
         model = Lesson
         fields = '__all__'
 
-
