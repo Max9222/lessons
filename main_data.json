@@ -1,0 +1,42 @@
+[
+  {
+    "model": "main.course",
+    "pk": 1,
+    "fields": {
+      "name": "Програмирование",
+      "image": "",
+      "description": "Изучаем языки",
+      "lesson": 1
+    }
+  },
+  {
+    "model": "main.lesson",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "description": "Чзык №1",
+      "image": "",
+      "link": null
+    }
+  },
+  {
+    "model": "main.lesson",
+    "pk": 2,
+    "fields": {
+      "name": "C++",
+      "description": "Чзык №2",
+      "image": "",
+      "link": null
+    }
+  },
+  {
+    "model": "main.lesson",
+    "pk": 3,
+    "fields": {
+      "name": "English",
+      "description": "World language",
+      "image": "",
+      "link": null
+    }
+  }
+]
