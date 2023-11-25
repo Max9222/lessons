@@ -47,8 +47,8 @@ class Payments(models.Model):
         (TRANSFER, 'Transfer'),
     )
 
-    #user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='main')
-    user = models.CharField(max_length=100, verbose_name='пользователь')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='main', null=True)
+    #user = models.CharField(max_length=100, verbose_name='пользователь')
     date_of_payment = models.DateTimeField(auto_now_add=True, verbose_name='дата оплаты')
     course_payment = models.ForeignKey('main.Course', on_delete=models.SET_NULL, null=True)
     lesson_payment = models.ForeignKey('main.Lesson', on_delete=models.SET_NULL, null=True)
