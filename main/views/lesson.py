@@ -2,7 +2,7 @@ from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticated
 
 from main.models import Lesson
-from main.permissions import IsModerator, IsOwner
+from main.permissions.lesson import *
 from main.seriallizers.lesson import LessonSerializer
 
 

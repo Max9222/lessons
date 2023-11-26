@@ -13,7 +13,7 @@ class Course(models.Model):
     lesson = models.ForeignKey('main.Lesson', verbose_name='Урок', related_name='main', on_delete=models.SET_NULL, null=True)
     course_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,
                                      verbose_name='владелец курса')
-    is_public =models.BooleanField(default=False)
+    is_public = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.name}'
 
