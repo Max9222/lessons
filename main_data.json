@@ -38,5 +38,29 @@
       "image": "",
       "link": null
     }
+  },
+  {
+    "model": "main.payments",
+    "pk": 1,
+    "fields": {
+      "user": null,
+      "date_of_payment": "2023-11-24T16:45:48.951Z",
+      "course_payment": 1,
+      "lesson_payment": 1,
+      "payment_amount": "100.00",
+      "payment_method": "Card"
+    }
+  },
+  {
+    "model": "main.payments",
+    "pk": 2,
+    "fields": {
+      "user": null,
+      "date_of_payment": "2023-11-24T16:46:31.784Z",
+      "course_payment": 1,
+      "lesson_payment": 2,
+      "payment_amount": "200.00",
+      "payment_method": "Transfer"
+    }
   }
 ]

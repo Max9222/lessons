@@ -5,3 +5,4 @@ sqlparse
 pillow
 djangorestframework
 django-filter
+djangorestframework-simplejwt
