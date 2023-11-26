@@ -11,7 +11,9 @@ class Course(models.Model):
     description = models.TextField(verbose_name='описание')
 
     lesson = models.ForeignKey('main.Lesson', verbose_name='Урок', related_name='main', on_delete=models.SET_NULL, null=True)
-
+    course_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,
+                                     verbose_name='владелец курса')
+    is_public =models.BooleanField(default=False)
     def __str__(self):
         return f'{self.name}'
 
@@ -27,7 +29,8 @@ class Lesson(models.Model):
     image = models.ImageField(upload_to='main/', verbose_name='превью(картинка)', **NULLABLE)
     link = models.SlugField(max_length=200, verbose_name='ссылка на видео', **NULLABLE)
 
-    #course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    lesson_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, verbose_name='владелец урока')
+    is_public = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'
