@@ -27,7 +27,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=100, verbose_name='название')
     description = models.TextField(verbose_name='описание')
     image = models.ImageField(upload_to='main/', verbose_name='превью(картинка)', **NULLABLE)
-    link = models.SlugField(max_length=200, verbose_name='ссылка на видео', **NULLABLE)
+    link = models.URLField(verbose_name='ссылка на видео', **NULLABLE)
 
     lesson_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, verbose_name='владелец урока')
     is_public = models.BooleanField(default=False)
