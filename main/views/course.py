@@ -2,6 +2,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from main.models import Course
+from main.paginators.course import CoursePaginator
 from main.permissions.course import *
 from main.seriallizers.course import CourseSerializer
 
@@ -9,6 +10,7 @@ from main.seriallizers.course import CourseSerializer
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    pagination_class = CoursePaginator
 
     def get_permissions(self):
         permission_classes = [IsAuthenticated]

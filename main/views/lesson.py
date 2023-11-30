@@ -2,6 +2,7 @@ from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticated
 
 from main.models import Lesson
+from main.paginators.lesson import LessonPaginator
 from main.permissions.lesson import *
 from main.seriallizers.lesson import LessonSerializer
 
@@ -10,6 +11,7 @@ class LessonListView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = LessonPaginator
 
 class LessonCreateView(CreateAPIView):
     queryset = Lesson.objects.all()
