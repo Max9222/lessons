@@ -1,6 +1,7 @@
 from django.db import models
 
 from config import settings
+from users.models import User
 
 NULLABLE = {'null': True, 'blank': True}
 
@@ -27,7 +28,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=100, verbose_name='название')
     description = models.TextField(verbose_name='описание')
     image = models.ImageField(upload_to='main/', verbose_name='превью(картинка)', **NULLABLE)
-    link = models.SlugField(max_length=200, verbose_name='ссылка на видео', **NULLABLE)
+    link = models.URLField(verbose_name='ссылка на видео', **NULLABLE)
 
     lesson_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, verbose_name='владелец урока')
     is_public = models.BooleanField(default=False)
@@ -65,3 +66,17 @@ class Payments(models.Model):
         verbose_name = 'Платеж'
         verbose_name_plural = 'Платежи'
         ordering = ('date_of_payment',)
+
+
+class Subscription(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс', null=True)
+    is_signed = models.BooleanField(verbose_name='Статус подписки', default=False)
+
+    def __str__(self):
+        return f"{self.user} подписан на {self.course}"
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
