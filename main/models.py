@@ -1,6 +1,7 @@
 from django.db import models
 
 from config import settings
+from users.models import User
 
 NULLABLE = {'null': True, 'blank': True}
 
@@ -65,3 +66,17 @@ class Payments(models.Model):
         verbose_name = 'Платеж'
         verbose_name_plural = 'Платежи'
         ordering = ('date_of_payment',)
+
+
+class Subscription(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс', null=True)
+    is_signed = models.BooleanField(verbose_name='Статус подписки', default=False)
+
+    def __str__(self):
+        return f"{self.user} подписан на {self.course}"
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'

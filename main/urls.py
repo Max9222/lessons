@@ -8,6 +8,7 @@ from django.urls import path
 from main.views.lesson import *
 from main.views.course import *
 from main.views.payments import *
+from main.views.subscription import SubscriptionCreateView, SubscriptionDestroyView
 
 app_name = MainConfig.name
 
@@ -27,5 +28,7 @@ urlpatterns = [
     path('payments/<int:pk>/update/', PaymentsUpdateView.as_view(), name='payments_update'),
     path('payments/<int:pk>/delete/', PaymentsDestroyView.as_view(), name='payments_delete'),
 
+    path('subscription/create/', SubscriptionCreateView.as_view(), name='subscription_create'),
+    path('subscription/<int:pk>/delete/', SubscriptionDestroyView.as_view(), name='subscription_delete'),
 
 ] + router.urls
