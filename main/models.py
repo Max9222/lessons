@@ -73,6 +73,7 @@ class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс', null=True)
     is_signed = models.BooleanField(verbose_name='Статус подписки', default=False)
+    price = models.PositiveIntegerField(verbose_name='цена', null=True)
 
     def __str__(self):
         return f"{self.user} подписан на {self.course}"
@@ -80,3 +81,4 @@ class Subscription(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
+
