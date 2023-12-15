@@ -4,11 +4,14 @@ from rest_framework.permissions import IsAuthenticated
 from main.models import Subscription
 # from main.permissions.lesson import *
 from main.seriallizers.subscription import SubscriptionSerializers
+from main.tasks import send_massage_add_materials
+
 
 class SubscriptionCreateView(CreateAPIView):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializers
-    # permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]S
+
 
 class SubscriptionDestroyView(DestroyAPIView):
     queryset = Subscription.objects.all()

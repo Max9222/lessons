@@ -5,6 +5,7 @@ from main.models import Course
 from main.paginators.course import CoursePaginator
 from main.permissions.course import *
 from main.seriallizers.course import CourseSerializer
+from main.tasks import send_massage_add_materials
 
 
 class CourseViewSet(ModelViewSet):
@@ -26,3 +27,10 @@ class CourseViewSet(ModelViewSet):
             permission_classes = [IsAuthenticated, IsOwner]
 
         return [permission() for permission in permission_classes]
+
+    def perform_create(self, serializer):
+        new_lesson = serializer.save(owner=self.request.user)
+        new_lesson.owner = self.request.user
+        new_lesson.save()
+        if new_lesson:
+            send_massage_add_materials.delay(new_lesson.course.id)
