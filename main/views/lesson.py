@@ -5,6 +5,7 @@ from main.models import Lesson
 from main.paginators.lesson import LessonPaginator
 from main.permissions.lesson import *
 from main.seriallizers.lesson import LessonSerializer
+from main.tasks import send_massage_add_materials
 
 
 class LessonListView(ListAPIView):
@@ -18,6 +19,13 @@ class LessonCreateView(CreateAPIView):
     serializer_class = LessonSerializer
     permission_classes = [AllowAny]
 
+    def perform_create(self, serializer):
+        new_lesson = serializer.save(owner=self.request.user)
+        new_lesson.owner = self.request.user
+        new_lesson.save()
+        if new_lesson:
+            send_massage_add_materials.delay(new_lesson.course.id)
+
 class LessonRetrieveView(RetrieveAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -27,6 +35,14 @@ class LessonUpdateView(UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = [AllowAny] # [IsAuthenticated, IsModerator | IsOwner]
+
+    def perform_update(self, serializer):
+        new_lesson = serializer.save(owner=self.request.user)
+        new_lesson.owner = self.request.user
+        new_lesson.save()
+        if new_lesson:
+            send_massage_add_materials.delay(new_lesson.course.id)
+
 
 class LessonDestroyView(DestroyAPIView):
     queryset = Lesson.objects.all()
