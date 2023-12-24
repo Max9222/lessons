@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lessons',
-        'USER': 'postgres',
-        'PASSWORD': 'qwert',
-        'HOST': '127.0.0.1'
+        'NAME': 'postgres',   # 'NAME': 'lessons'
+        'USER': 'postgres',   # 'USER': 'postgres'
+        'PASSWORD': 'mysecretpassword',  # 'PASSWORD': 'qwert'
+        'HOST': 'db'   # 'HOST': '127.0.0.1'
     }
 }
 
@@ -149,8 +149,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
 
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 CELERY_TASK_TRACK_STARTED = True
 
 CELERY_BEAT_SCHEDULE = {
